@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Content } from './styles';
+import { Container, HeaderWrapper, Header, DropboxLogo, Content } from './styles';
 
 interface Props {
     variant: 'blue' | 'beige' | 'white' | 'black';
@@ -9,14 +9,27 @@ interface Props {
 }
 
 const Section: React.FC<Props> = ({ variant, title, description }) => {
-  return (
-    <Container>
-        <Content>
-            <h2>{{title}}</h2>
-            <p>{{description}}</p>
-        </Content>
-    </Container>
-  );
+    const buttonVariant = Math.round(Math.random());
+
+    return (
+        <Container>
+            <HeaderWrapper>
+                <Header>
+                    <h1>
+                        <DropboxLogo></DropboxLogo>
+                        <span>Dropbox</span>
+                    </h1>
+                    <button>
+                        {buttonVariant === 0 ? 'Interagir' : 'Acessar'}
+                    </button>
+                </Header>
+            </HeaderWrapper>
+            <Content>
+                <h2>{{ title }}</h2>
+                <p>{{ description }}</p>
+            </Content>
+        </Container>
+    );
 }
 
 export default Section;
